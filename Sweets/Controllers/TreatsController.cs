@@ -52,6 +52,11 @@ namespace Sweets.Controllers
       return View(thisTreat);
     }
 
+    public ActionResult Delete(int id)
+    {
+      Treat thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
+      return View(thisTreat);
+    }
    
   }
 }
