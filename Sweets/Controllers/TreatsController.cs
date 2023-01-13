@@ -33,6 +33,19 @@ namespace Sweets.Controllers
       return View(treats);
     }
 
+    public ActionResult Create()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Treat treat)
+    {      
+      _db.Treats.Add(treat);
+      _db.SaveChanges();
+      return RedirectToAction("Index");    
+    }
+
    
   }
 }
