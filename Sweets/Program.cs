@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using RecipeBox.Models;
+using Sweets.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace RecipeBox
+namespace Sweets
 {
   class Program
   {
@@ -15,7 +15,7 @@ namespace RecipeBox
 
       builder.Services.AddControllersWithViews();
 
-      builder.Services.AddDbContext<RecipeBoxContext>(
+      builder.Services.AddDbContext<SweetsContext>(
                         dbContextOptions => dbContextOptions
                           .UseMySql(
                             builder.Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(builder.Configuration["ConnectionStrings:DefaultConnection"]
@@ -25,7 +25,7 @@ namespace RecipeBox
 
       // New code below!!
       builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<RecipeBoxContext>()
+                .AddEntityFrameworkStores<SweetsContext>()
                 .AddDefaultTokenProviders();
 
       builder.Services.Configure<IdentityOptions>(options =>
