@@ -11,32 +11,26 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Routing;
 
 
-namespace RecipeBox.Controllers
+namespace Sweets.Controllers
 {
 
-  [Authorize]
-  public class SweetsController : Controller
+  
+  public class TreatsController : Controller
   {
     private readonly SweetsContext _db;
     private readonly UserManager<ApplicationUser> _userManager;
 
-    public SweetsController(UserManager<ApplicationUser> userManager, SweetsContext db)
+    public TreatsController(UserManager<ApplicationUser> userManager, SweetsContext db)
     {        
         _userManager = userManager;
         _db = db;
     }
         
-    public async Task<ActionResult> Index()
-    {/
+    public ActionResult Index()
+    {
+        List<Treat> treats = _db.Treats.ToList();
       
-      List<Recipe> recipeList = new List<Recipe> {};
-      string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      if (userId != null)
-      {
-        ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
-        recipeList = _db.Recipes.Where(entry => entry.User.Id == currentUser.Id).ToList();
-      }
-      return View(recipeList);
+      return View(treats);
     }
 
    
