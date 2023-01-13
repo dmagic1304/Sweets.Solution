@@ -21,7 +21,5 @@ namespace Sweets.Controllers
     {      
       return View();
     }
-
-
   }
 }
