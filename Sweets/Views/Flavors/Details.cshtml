@@ -1,0 +1,11 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Sweets.Models
+
+
+<h2>Flavor: @Model.Taste</h2>
+
+<p>@Html.ActionLink("Delete this flavor", "Delete", new { id = Model.FlavorId}) </p>
+<p>@Html.ActionLink("Edit this flavor", "Edit", new { id = Model.FlavorId}) </p>
