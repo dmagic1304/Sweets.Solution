@@ -8,6 +8,7 @@ namespace Sweets.Models
     public int TreatId { get; set; }
 
     public string Name { get; set; } 
+    public List<FlavorTreat> JointEntities { get; }
     
 
   }

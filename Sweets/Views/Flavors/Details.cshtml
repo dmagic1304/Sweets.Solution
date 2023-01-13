@@ -7,5 +7,27 @@
 
 <h2>Flavor: @Model.Taste</h2>
 
+@if(@Model.JointEntities.Count == 0)
+{
+  <p>This flavor does not have any treats</p>
+}
+else
+{
+  <h4>This flavor is in these treats:</h4>
+  <ul>
+    @foreach(FlavorTreat join in Model.JointEntities)
+    {
+      <li>Treat: @join.Treat.Name</li>
+      @using (Html.BeginForm("DeleteJoin", "Flavors"))
+      {
+        @Html.Hidden("joinId", @join.FlavorTreatId)
+        <input type="submit" value="Delete"/>
+      }
+      
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Add a Treat", "AddTreat", new { id = Model.FlavorId })</p>
 <p>@Html.ActionLink("Delete this flavor", "Delete", new { id = Model.FlavorId}) </p>
 <p>@Html.ActionLink("Edit this flavor", "Edit", new { id = Model.FlavorId}) </p>

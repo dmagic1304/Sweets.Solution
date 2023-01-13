@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sweets.Models;
 
@@ -10,9 +11,10 @@ using Sweets.Models;
 namespace Sweets.Migrations
 {
     [DbContext(typeof(SweetsContext))]
-    partial class SweetsContextModelSnapshot : ModelSnapshot
+    [Migration("20230113231051_FlavorTreat")]
+    partial class FlavorTreat
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -314,13 +316,13 @@ namespace Sweets.Migrations
             modelBuilder.Entity("Sweets.Models.FlavorTreat", b =>
                 {
                     b.HasOne("Sweets.Models.Flavor", "Flavor")
-                        .WithMany("JointEntities")
+                        .WithMany()
                         .HasForeignKey("FlavorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Sweets.Models.Treat", "Treat")
-                        .WithMany("JointEntities")
+                        .WithMany()
                         .HasForeignKey("TreatId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -328,16 +330,6 @@ namespace Sweets.Migrations
                     b.Navigation("Flavor");
 
                     b.Navigation("Treat");
-                });
-
-            modelBuilder.Entity("Sweets.Models.Flavor", b =>
-                {
-                    b.Navigation("JointEntities");
-                });
-
-            modelBuilder.Entity("Sweets.Models.Treat", b =>
-                {
-                    b.Navigation("JointEntities");
                 });
 #pragma warning restore 612, 618
         }
