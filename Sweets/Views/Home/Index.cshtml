@@ -5,17 +5,30 @@
 @using Sweets.Models
 
 <h1>Welcome to Pierre's Sweet and Savory Treats!</h1>
-<p>@Html.ActionLink("Treats", "Index", "Treats")</p>
 
-  @* @if(Model.Count == 0)
+<h2>Treats:</h2>
+  @if(Model.Count == 0)
   {
-    <p>No recipes added yet.</p>
+    <p>No treats added yet.</p>
   }
   else
   {
-  @foreach (Flavor recipe in Model)
+  @foreach (Treat treat in Model)
     {
-      <li>@Html.ActionLink(recipe.Name, "Details", new { id = recipe.RecipeId })</li>
+      <li>@Html.ActionLink(treat.Name, "Details", "Treats", new { id = treat.TreatId })</li>
     }
-  } *@
+  }
+
+<h2>Flavors:</h2>
+  @if(ViewBag.AllFlavors.Count == 0)
+  {
+    <p>No flavors added yet.</p>
+  }
+  else
+  {
+  @foreach (Flavor flavor in ViewBag.AllFlavors)
+    {
+      <li>@Html.ActionLink(flavor.Taste, "Details", "Flavors", new { id = flavor.FlavorId })</li>
+    }
+  }
 

@@ -18,8 +18,13 @@ namespace Sweets.Controllers
       }
     
     public ActionResult Index()
-    {      
-      return View();
+    {
+
+      List<Treat> allTreats = _db.Treats.ToList();
+      ViewBag.AllFlavors = _db.Flavors.ToList();
+      return View(allTreats);
     }
+
+
   }
 }
