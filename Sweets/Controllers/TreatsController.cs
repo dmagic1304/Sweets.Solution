@@ -33,11 +33,13 @@ namespace Sweets.Controllers
       return View(treats);
     }
 
+    [Authorize]
     public ActionResult Create()
     {
       return View();
     }
 
+    [Authorize]
     [HttpPost]
     public ActionResult Create(Treat treat)
     {      
@@ -54,12 +56,14 @@ namespace Sweets.Controllers
       return View(thisTreat);
     }
 
+    [Authorize]
     public ActionResult Delete(int id)
     {
       Treat thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
       return View(thisTreat);
     }
 
+    [Authorize]
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
@@ -69,12 +73,14 @@ namespace Sweets.Controllers
       return RedirectToAction("Index");
     }
 
+    [Authorize]
     public ActionResult Edit(int id)
     {
       Treat thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);      
       return View(thisTreat);
     }
 
+    [Authorize]
     [HttpPost]
     public ActionResult Edit(Treat treat)
     {
@@ -83,6 +89,7 @@ namespace Sweets.Controllers
       return RedirectToAction("Index");
     }
 
+    [Authorize]
     public ActionResult AddFlavor(int id)
     {
       Treat thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);      
@@ -90,6 +97,7 @@ namespace Sweets.Controllers
       return View(thisTreat);
     }
 
+    [Authorize]
     [HttpPost]
     public ActionResult AddFlavor(Treat treat, int flavorId)
     {      
@@ -105,6 +113,7 @@ namespace Sweets.Controllers
       return RedirectToAction("Details", new { id = treat.TreatId });
     }  
 
+    [Authorize]
     [HttpPost]
     public ActionResult DeleteJoin(int joinId)
     {
