@@ -15,7 +15,7 @@
 - MySQL
 - MySQL Workbench
 - EF Core
-- Dotnet EF
+- Dotnet EF 6.0.1
 - AspNetCore Identity
 
 ## Description
